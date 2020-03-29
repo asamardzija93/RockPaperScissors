@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+
+  <script>
+
+    function computerPlay(){
+        let gameChoices = [
+            'rock',
+            'paper',
+            'scissors'
+        ];
+        return gameChoices[Math.floor(Math.random()*gameChoices.length)];
+    }
+
+    function game(){
+        let playerScore=0;
+        let computerScore=0;
+
+        while(playerScore < 3 && computerScore < 3){
+
+            computerPick = computerPlay();
+
+            let playerPick=prompt('rock,paper,scissors');
+
+            let result = playRound(playerPick, computerPick);
+
+            if(result === 'Player wins'){
+                playerScore++;
+                console.log('Player wins. Score is: Player:' + playerScore +' Computer:' + computerScore);
+            }
+            if(result === 'Computer wins'){
+                computerScore++;
+                console.log('Computer wins. Score is: Player:' + playerScore +' Computer:' + computerScore);
+            }
+            if(result === 'It was a tie'){
+                console.log('It was a tie. Score is: Player:' + playerScore +' Computer:' + computerScore);
+            }       
+        }
+
+        if(playerScore===3){
+            return('Player wins the game.');
+        }
+        else{
+            return('Computer wins the game.');
+        }
+    }
+    
+    function playRound(playerSelection, computerSelection){
+
+        playerSelection = playerSelection.toLowerCase();
+
+        if(playerSelection==='rock'){
+            if(computerSelection==='rock'){
+                return('It was a tie')
+            }
+            else if(computerSelection==='scissors'){
+                return('Player wins');
+            }
+            else{
+                return('Computer wins');
+            }   
+        }
+        if(playerSelection==='paper'){
+            if(computerSelection==='paper'){
+                return('It was a tie')
+            }
+            else if(computerSelection==='rock'){
+                return('Player wins');
+            }
+            else{
+                return('Computer wins');
+            }
+        }
+        if(playerSelection==='scissors'){
+            if(computerSelection==='scissors'){
+                return('It was a tie')
+            }
+            else if(computerSelection==='paper'){
+                return('Player wins');
+            }
+            else{
+                return('Computer wins');
+            }
+    }
+}
+  </script>
+</body>
+</html>
